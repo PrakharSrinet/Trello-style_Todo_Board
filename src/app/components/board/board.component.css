@@ -1,0 +1,268 @@
+/* Board Container: Takes Full Width with Padding */
+.board-container {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #8391A5;
+    width: 100%; /* Prevents horizontal scroll */
+    box-sizing: border-box;
+    overflow-x: hidden; /* Ensures no horizontal scroll */
+}
+
+/* Header: Align label left and button right */
+.board-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px 0;
+}
+
+.board-header-label {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+/* Add New Work Item Button */
+.add-todo-btn {
+    padding: 10px 16px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #6DD0DB;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Board */
+.board {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    padding-right: 20px;
+}
+
+/* Lanes */
+.lane {
+    flex: 1;
+    min-width: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    height: calc(100vh - 9rem);
+    overflow-y: auto;
+}
+
+/* Custom Scrollbar */
+.lane::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lane::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+.lane::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* Lane Colors */
+.pending { background: #ffdbbb; }
+.in-progress { background: #fff4c2; }
+.completed { background: #c8f7c5; }
+
+/* Task List */
+.list {
+    min-height: calc(100vh - 9rem);
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Task Card */
+.todo-card {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin-bottom: 10px;
+    background: #88c0d0;
+    border-radius: 0.2rem;
+    cursor: grab;
+}
+
+/* Task Title */
+.todo-title {
+    font-size: 16px;
+    text-align: center;
+}
+
+/* Task Description */
+.todo-description {
+    font-size: 14px;
+    color: #333;
+    margin-top: 5px;
+    text-align: center;
+    word-wrap: break-word;
+}
+
+/* Task Actions */
+.todo-actions {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.todo-card {
+    background: azure;
+    border-radius: 8px;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    cursor: grab;
+    transition: transform 0.1s ease-in-out;
+  }
+  
+  .todo-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  }
+  
+  .todo-header {
+    font-weight: 600;
+    font-size: 14px;
+    color: #2c3e50;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+  
+  .todo-body {
+    font-size: 12px;
+    color: #555;
+    padding: 8px 0;
+    min-height: 30px;
+  }
+  
+  .todo-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+    padding-top: 6px;
+  }
+  
+  .todo-footer button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+  }
+  
+  .todo-footer button:hover {
+    color: #007bff;
+  }
+
+  
+/* Modal Styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Modal Box */
+.modal {
+    width: 33% !important;
+    background: #f3f3f3;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    width: 350px;
+}
+
+/* Editable Header */
+.modal-header h3 {
+    font-size: 20px;
+    cursor: text;
+    border-bottom: 1px solid transparent;
+    transition: border 0.2s ease-in-out;
+}
+
+.modal-header h3:focus {
+    outline: none;
+    border-bottom: 1px solid #6DD0DB;
+}
+
+/* Modal Body */
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+/* Textarea */
+.modal-body textarea {
+    height: 80px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+}
+
+/* Modal Actions */
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    gap: 10px;
+}
+
+/* Buttons */
+.modal-actions button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Save Button */
+.modal-actions button:first-child {
+    background: #6DD0DB;
+    color: white;
+}
+
+/* Cancel Button */
+.modal-actions button:last-child {
+    background: #f44336;
+    color: white;
+}
+
+.header-input {
+    font-size: 1em;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+  }
+
+.input-new-task {
+    height: 30px;
+    width: 34rem;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    resize: none;
+}

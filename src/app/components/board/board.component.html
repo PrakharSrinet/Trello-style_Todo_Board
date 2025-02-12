@@ -1,0 +1,85 @@
+<div class="board-container">
+  <!-- Add New Work Item Button -->
+  <div class="board-header">
+    <div class="board-header-label">Trello-style Todo Board</div>
+    <button class="add-todo-btn" (click)="openAddModal()">+ Add New Work Item</button>
+  </div>
+
+  <!-- Task Lanes -->
+  <div class="board" cdkDropListGroup>
+    <div *ngFor="let lane of lanesKeys" class="lane" [ngClass]="lane">
+      <h2>{{ lane | titlecase }}</h2>
+
+      <div 
+        cdkDropList
+        [cdkDropListData]="lanes[lane]"
+        [cdkDropListConnectedTo]="lanesKeys"
+        class="list"
+        (cdkDropListDropped)="drop($event, lane)">
+
+        <div *ngFor="let todo of lanes[lane]; let i = index; trackBy: trackById" cdkDrag class="todo-card">
+          <div class="todo-header">
+            <span class="todo-title">{{ todo.todo }}</span>
+          </div>
+        
+          <div class="todo-body">
+            <p class="todo-description">{{ todo.description || 'No description provided' }}</p>
+          </div>
+        
+          <div class="todo-footer">
+            <button (click)="openEditModal(todo)" title="Edit">✏️</button>
+            <button (click)="deleteTodo(lane, i)" title="Delete">🗑️</button>
+          </div>
+        </div>        
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Task Modal -->
+<div class="modal-overlay" *ngIf="isEditModalOpen">
+  <div class="modal">
+    <div class="modal-header">
+      <h3 *ngIf="!isEditing" (click)="toggleEdit()">
+        {{ editedText }}
+      </h3>
+      <input
+        *ngIf="isEditing"
+        type="text"
+        [(ngModel)]="editedText"
+        (blur)="toggleEdit()"
+        (keydown.enter)="toggleEdit()"
+        class="header-input"
+      />              
+    </div>
+
+    <div class="modal-body">
+      <label for="description">Description</label>
+      <textarea id="description" [(ngModel)]="editedDescription" placeholder="You can add a description here."></textarea>
+    </div>
+
+    <div class="modal-actions">
+      <button class="save-btn" (click)="saveEdit()">Save</button>
+      <button (click)="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Add New Task Modal -->
+<div class="modal-overlay" *ngIf="isAddModalOpen">
+  <div class="modal">
+    <h3>Add New Work Item</h3>
+    <input  class="input-new-task" type="text" [(ngModel)]="newTodoText" placeholder="Enter task" />
+
+    <div class="modal-body">
+      <label for="new-description">Description</label>
+      <textarea id="new-description" [(ngModel)]="newTodoDescription" placeholder="You can add a description here."></textarea>
+    </div>
+
+    <div class="modal-actions">
+      <button (click)="addTodo()">Save</button>
+      <button (click)="closeModal()">Cancel</button>
+    </div>
+  </div>
+</div>
