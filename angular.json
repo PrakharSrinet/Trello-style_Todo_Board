@@ -43,7 +43,8 @@
                   "maximumError": "4kb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "baseHref": "/Trello-style_Todo_Board/"
             },
             "development": {
               "buildOptimizer": false,
